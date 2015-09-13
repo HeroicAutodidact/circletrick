@@ -11,12 +11,12 @@
 
 
 guard :jasmine, :server => :jasmine_gem, :port=>8888, :jasmine_url => 'http://localhost:8888/', :server_timeout => 120 do
-  watch(%r{spec/.+$})
-  watch(%r{js/.+$}) { |m| puts "spec/js/#{m[1]}_spec" }
+  watch(%r{spec\/javascripts\/.+})
+  watch(%r{js\/(.+)\.js}) { |m| "spec/javascripts/#{m[1]}_spec.js" }
   #watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)(?:\.\w+)*$}) { |m| "spec/javascripts/#{ m[1] }_spec.#{ m[2] }" }
 end
 
 guard 'livereload', :notify=>true do
-  watch(%r{js/.*\.js})
+  watch(%r{js\/.*\.js}){'index.html'}
   watch(%r{index.html})
 end
