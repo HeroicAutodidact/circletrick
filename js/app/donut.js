@@ -1,9 +1,21 @@
-define(function(require){
-		var Donut = require('./donut');
-		var canvas = document.getElementById('theCanvas');
-		var c = canvas.getContext('2d');
-		d = new Donut(c, 10, 20, 'black', 'gray');
-		alert(d);
+define(function(){
+	//Donut constructor
+	var Donut = function(ctx,
+											 ir, //inner radius
+											 or, //outer radius
+											 fill,
+											 stroke,
+											 arc ){
+		this.ctx = ctx;
+		this.ir = ir;
+		this.or = or;
+		this.fill = fill;
+		this.stroke = stroke;
+		this.arc = arc;
+	};
+
+	//Draw a donut about the origin of current context
+	Donut.prototype.draw = function(){
 		// c.fillStyle = "skyblue";
 		// c.fillRect(0,0,canvas.width,canvas.height);
 
@@ -19,4 +31,9 @@ define(function(require){
 		// maskCtx.arc(30,30,10,0,2*Math.PI);
 		// maskCtx.fill();
 		// c.drawImage(maskCanvas,0,0);
-});
+
+	};
+
+	//Return the donut for usage
+	return Donut;
+} ); //end definition
