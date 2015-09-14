@@ -34,10 +34,16 @@ define(function(){
 		dctx = dcan.getContext('2d');
 	};
 
+	Donut.prototype.updateRadii = fucntion(newIr, newOr){
+		this.ir = newIr;
+		this.or = newOr;
+	}
+
 	//Draw a donut about the origin of current context
 	Donut.prototype.draw = function(){
 
 		//Setup pallette
+		dctx.clearRect(0,0,dcan.width,dcan.height);
 		dctx.fillStyle = this.fill;
 		dctx.strokeStyle = this.stroke;
 		dctx.lineWidth = this.sw;
