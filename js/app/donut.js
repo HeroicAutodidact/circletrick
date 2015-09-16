@@ -34,7 +34,7 @@ define(function(){
 		dctx = dcan.getContext('2d');
 	};
 
-	Donut.prototype.updateRadii = fucntion(newIr, newOr){
+	Donut.prototype.updateRadii = function(newIr, newOr){
 		this.ir = newIr;
 		this.or = newOr;
 	}
@@ -78,6 +78,13 @@ define(function(){
 		// maskCtx.fill();
 		// c.drawImage(maskCanvas,0,0);
 
+	};
+
+	Donut.prototype.drawAround = function(){
+		this.ctx.save();
+			this.ctx.translate(-this.center,-this.center);
+			this.draw();
+		this.ctx.restore();
 	};
 
 	//Return the donut for usage
